@@ -1,0 +1,344 @@
+:root, .navColor{
+    --color-purple: #575399;
+    --color-yellow: #eddb4f;
+    --color-red: #cc0000;
+    --color-orange: #e3a96a;
+    --color-brown: #4d2a1c;
+    --color-lavender: #cdc8dc;
+
+    --border-style: 2px solid #000000;
+    --border-radius: 15px;
+    --box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-style: normal !important;
+}
+
+.body, .navColor{
+    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 50%, var(--color-purple) 100%);
+}
+body {
+    font-family: 'Tahoma', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+p,
+span,
+div,
+input,
+label,
+a,
+li,
+td,
+th {
+    font-style: italic;
+    color: #000;
+}
+
+.special{
+    border: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.btn,
+strong,
+.nav-brand {
+    font-style: normal;
+    font-weight: normal;
+    color: #000;
+    text-transform: uppercase;
+}
+
+header,
+.navbar-custom {
+    background-color: #fff;
+    border-bottom: solid 2px #575399;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title h1 {
+    font-size: 39px;
+    margin: 0;
+    color: var(--color-purple);
+}
+
+.logo-img {
+    height: 65px;
+    width: auto;
+}
+
+.container-custom {
+    background-color: #ffffff;
+    border: var(--border-style);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 40px;
+    padding-bottom: 60px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-control-custom {
+    background-color: transparent;
+    border: var(--border-style);
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.form-control-custom::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+    font-style: italic;
+}
+
+.btn-custom {
+    background-color: var(--color-yellow);
+    border: var(--border-style);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0px #000;
+    color: #000;
+    padding: 10px 30px;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    display: block;
+}
+
+.btn-custom:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000;
+    background-color: var(--color-orange);
+}
+
+.btn-secondary-custom {
+    background-color: #fff;
+    border: var(--border-style);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0px #000;
+    color: var(--color-purple);
+    padding: 5px 15px;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.btn-secondary-custom:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
+    background-color: #f0f0f0;
+}
+
+footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: transparent;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+footer a:hover {
+    color: var(--color-yellow);
+    text-decoration: underline;
+}
+
+.table-custom {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.table-custom th {
+    text-align: left;
+    padding: 10px;
+    border-bottom: var(--border-style);
+}
+
+.table-custom td {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.footer-custom {
+    border-top: solid 2px #575399;
+    color: #26106E;
+    /*background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 20%, var(--color-purple) 100%);*/
+    background: white;
+}
+
+.footer-custom h5 {
+    font-size: 0.9rem;   /* antes ~1.25rem */
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.footer-map-frame {
+    border-radius: 5%;
+    border: 0;
+}
+
+.footer-col-contact {
+    text-align: center;
+    border-left: solid 2px #575399;
+    color: #26106E;
+    margin-top: 3cqw;
+}
+
+.email-spacing {
+    margin-right: 20px;
+}
+
+.footer-col-copyright {
+    text-align: center;
+    border-right: solid 2px #575399;
+    color: #26106E;
+    margin-top: 3%;
+}
+
+.footer-logo-img {
+    width: 35%;
+}
+
+.footer-col-social {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.social-icon-img {
+    width: 20%;
+    margin: 10px;
+}
+
+.jumbotron-custom {
+    position: relative;
+    height: 450px;
+}
+
+.jumbotron-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/img/Bocetos_Falleras/Refugio.jpeg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* solo la imagen */
+}
+
+.jumbotron-content {
+    position: relative; /* crea su propio contexto */
+    height: 100%;
+    color: white;
+    padding: 2rem;
+}
+
+h1{
+    color: black;
+}
+
+.card-img-top{
+    height: 100%;
+    width: 100%;
+}
+
+.logo{
+    height: 225px;
+    width: 225px;
+}
+
+i{
+    color: #5D5ABB;
+}
+
+i:hover{
+    color: #E28E52;
+    border: solid #E28E52 2px;
+}
+
+.menu{
+    background-color: #E28E52;
+    opacity: 75%;
+    border-radius: 10px;
+}
+
+i:active{
+    color: #E28E52;
+}
+
+a{
+    opacity: 100%;
+}
+
+li:hover{
+    color: #5D5ABB;
+}
+
+.menu{
+    width: 225px;
+}
+
+.drop-i{
+    border: solid #5D5ABB 2px;
+    border-radius: 90%;
+    transition: transform 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    display: inline-block; 
+}
+
+.drop-i:hover{
+    transform: scale(1.5);
+}
+
+.navbar-toggler[aria-expanded="true"] .drop-i {
+    color: #E28E52;
+    transform: scale(1.15);
+    transition: all 0.5s;
+    border: solid #E28E52 2px;
+}
+
+.navbar-toggler[aria-expanded="true"] .drop-i:hover {
+    color: #5D5ABB;
+    transform: scale(1.5);
+    transition: all 2s;
+    border: solid #5D5ABB 2px;
+}
+
+.btn{
+    border: solid #5D5ABB 1px;
+    color: #5D5ABB;
+}
+
+.btn:hover{
+    border: solid #E28E52 1px;
+    color: #E28E52;
+}

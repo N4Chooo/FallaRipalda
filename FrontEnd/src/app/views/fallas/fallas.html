@@ -1,0 +1,107 @@
+<app-header [active]="active" [select]="select" (selectChange)="select = $event"></app-header>
+
+@for(fallas of falla; track fallas; let i = $index){
+<div class="row mt-4 justify-content-center mx-auto">
+    @if(select == 'todos'){
+    @if (i >= 2) {
+    <div class="col-md-4 col-lg-4 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="{{falla[i].sketch}}" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Boceto</h5>
+                <p class="project-extra"> {{falla[i].year}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            @if(falla[i].year == '2020'){
+
+            }@else{
+            <img src="{{falla[i].photo}}" class="card-img-top rounded" alt="">
+            } <div class="card-body">
+                <h5 class="card-title">Falla</h5>
+                <p class="project-extra"> {{falla[i].title}} </p>
+                <p class="project-extra"> {{falla[i].artist}} </p>
+                <p class="project-extra"> {{falla[i].year}} </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="{{falla[i].pardoned_doll}}" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Ninot</h5>
+                <p class="project-extra"> {{falla[i].year}} </p>
+
+            </div>
+        </div>
+    </div>
+    }@else{
+    <div class="col-md-5 col-lg-5 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="{{falla[i].sketch}}" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Boceto De La Falla</h5>
+                <p class="project-extra"> {{falla[i].title}} </p>
+                <p class="project-extra"> {{falla[i].artist}} </p>
+                <p class="project-extra"> {{falla[i].year}} </p>
+            </div>
+        </div>
+    </div>
+    }
+    }@else if(select == falla[i].year){
+    @if (i >= 2) {
+    <div class="col-md-4 col-lg-4 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="{{falla[i].sketch}}" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Boceto</h5>
+                <p class="project-extra"> {{falla[i].year}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            @if(falla[i].year == '2020'){
+
+            }@else{
+            <img src="{{falla[i].photo}}" class="card-img-top rounded" alt="">
+            }
+
+            <div class="card-body">
+                <h5 class="card-title">Falla</h5>
+                <p class="project-extra"> {{falla[i].title}} </p>
+                <p class="project-extra"> {{falla[i].artist}} </p>
+                <p class="project-extra"> {{falla[i].year}} </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="{{falla[i].pardoned_doll}}" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Ninot</h5>
+                <p class="project-extra"> {{falla[i].year}} </p>
+
+            </div>
+        </div>
+    </div>
+    }@else{
+    <div class="col-md-5 col-lg-5 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="{{falla[i].sketch}}" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Boceto De La Falla</h5>
+                <p class="project-extra"> {{falla[i].title}} </p>
+                <p class="project-extra"> {{falla[i].artist}} </p>
+                <p class="project-extra"> {{falla[i].year}} </p>
+            </div>
+        </div>
+    </div>
+    }
+    }
+</div>
+}

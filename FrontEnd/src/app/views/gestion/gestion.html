@@ -1,0 +1,217 @@
+<app-header [active]="active"></app-header>
+
+<main class="container-fluid body container-custom">
+    <div class="container-custom">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            @if(listB == true && edit == false) {
+            <h2>Listado de Falleros</h2>
+            <button (click)="create()" class="btn-secondary-custom" style="width: auto; margin:0;">Crear nuevo
+                fallero</button>
+            }
+            @if(creation == true) {
+            <h2>Crear nuevo fallero</h2>
+            <button (click)="list()" class="btn-secondary-custom" style="width: auto; margin:0;">Volver al
+                listado</button>
+            }
+            @if(edit == true) {
+            <h2>Editar fallero</h2>
+            <button (click)="list()" class="btn-secondary-custom" style="width: auto; margin:0;">Volver al
+                listado</button>
+            }
+
+        </div>
+        <div style="overflow-x: auto;">
+            @if(listB == true){
+            @if(show == true) {
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Recompensas</th>
+                        <th>Estado</th>
+                        <th>Rol</th>
+                        <th>Cuota</th>
+                        <th>DNI</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ faller.name }}</td>
+                        <td>{{ faller.category }}</td>
+                        <td>{{ faller.rewards }}</td>
+                        @if(faller.payment_status == true) {
+                        <td>Pagado</td>
+                        } @else {
+                        <td style="background-color: red;">Pendiente</td>
+                        }
+                        <td>{{ faller.rol }}</td>
+                        <td>{{ faller.fee }}</td>
+                        <td>{{ faller.dni }}</td>
+                        <td><button class="btn-secondary-custom" (click)="list()">Volver</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            }@else if(edit == true) {
+            <form (ngSubmit)="onEdit()" [formGroup]="editForm" method="post">
+                <div class="mb-4 text-center">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control-custom" placeholder="Nombre y Apellido" id="name"
+                        formControlName="name" required>
+                </div>
+                <div class="mb-4 text-center">
+                    <label for="category" class="form-label">Categoría</label>
+                    <select class="form-control-custom" id="category" formControlName="category" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Honor">Honor</option>
+                        <option value="Adulto">Adulto</option>
+                        <option value="Juvenil">Juvenil</option>
+                        <option value="Infantil">Infantil</option>
+                    </select>
+                </div>
+                <div class="mb-3 text-center">
+                    <label for="reward" class="form-label">Recompensas</label>
+                    <input type="text" class="form-control-custom" placeholder="Recompensas" id="reward"
+                        formControlName="reward" required>
+                </div>
+                <div class="mb-4 text-center">
+                    <label for="payment" class="form-label">Pago</label>
+                    <select class="form-control-custom" id="payment" formControlName="payment" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="0">Pagado</option>
+                        <option value="1">Pendiente</option>
+                    </select>
+                </div>
+                <div class="mb-4 text-center">
+                    <label for="fee" class="form-label">Cuota</label>
+                    <select class="form-control-custom" id="fee" formControlName="fee" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="0">Adulto General</option>
+                        <option value="1">Infantil</option>
+                        <option value="2">Juvenil</option>
+                        <option value="3">Jubilado</option>
+                        <option value="4">Honor</option>
+                        <option value="5">Familiar</option>
+                        <option value="6">Bebe</option>
+                        <option value="7">Colaborador Externo</option>
+                        <option value="8">Simpatizante</option>
+                        <option value="9">Patrocinador VIP</option>
+                    </select>
+                </div>
+                <div class="mb-3 text-center">
+                    <label for="rol" class="form-label">Rol</label>
+                    <input type="text" class="form-control-custom" placeholder="Rol" id="rol" formControlName="rol"
+                        required>
+                </div>
+                <div class="mb-4 text-center">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text" class="form-control-custom" id="dni" placeholder="DNI con letra"
+                        formControlName="dni" required>
+
+                </div>
+                <button type="submit" class="btn-custom">Editar</button>
+            </form> 
+
+            } @else {
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>Indice</th>
+                        <th>Nombre</th>
+                        <th>DNI</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(fallero of falleros; track fallero; let i = $index) {
+                    <tr>
+                        <td>{{i + 1 }}</td>
+                        <td>{{ fallero.name }}</td>
+                        <td>{{ fallero.dni }}</td>
+                        @if(fallero.payment_status == true) {
+                        <td>Pagado</td>
+                        } @else {
+                        <td style="background-color: red;">Pendiente</td>
+                        }
+                        <td><button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;"
+                                (click)="editBtn(fallero)">Editar</button>
+                            <button class="btn-secondary-custom" style="margin-right: 40px;"
+                                (click)="detail(fallero)">Detalle</button>
+                            <button class="btn-secondary-custom" style="margin-right: -350px;"
+                                (click)="delete(fallero.id)">Dar de baja</button>
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            }
+            }
+            @if(creation == true) {
+            <form (ngSubmit)="onSubmit()" [formGroup]="gestionForm" method="post">
+                <div class="mb-4 text-center">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control-custom" placeholder="Nombre y Apellido" id="name"
+                        formControlName="name" required>
+                        <input type="hidden" class="form-control-custom"  id="id"
+                        formControlName="id" required>
+                </div>
+                <div class="mb-4 text-center">
+                    <label for="category" class="form-label">Categoría</label>
+                    <select class="form-control-custom" id="category" formControlName="category" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Honor">Honor</option>
+                        <option value="Adulto">Adulto</option>
+                        <option value="Juvenil">Juvenil</option>
+                        <option value="Infantil">Infantil</option>
+                    </select>
+                </div>
+                <div class="mb-3 text-center">
+                    <label for="reward" class="form-label">Recompensas</label>
+                    <input type="text" class="form-control-custom" placeholder="Recompensas" id="reward"
+                        formControlName="reward" required>
+                </div>
+                <div class="mb-4 text-center">
+                    <label for="payment" class="form-label">Pago</label>
+                    <select class="form-control-custom" id="payment" formControlName="payment" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="0">Pagado</option>
+                        <option value="1">Pendiente</option>
+                    </select>
+                </div>
+                <div class="mb-4 text-center">
+                    <label for="fee" class="form-label">Cuota</label>
+                    <select class="form-control-custom" id="fee" formControlName="fee" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="0">Adulto General</option>
+                        <option value="1">Infantil</option>
+                        <option value="2">Juvenil</option>
+                        <option value="3">Jubilado</option>
+                        <option value="4">Honor</option>
+                        <option value="5">Familiar</option>
+                        <option value="6">Bebe</option>
+                        <option value="7">Colaborador Externo</option>
+                        <option value="8">Simpatizante</option>
+                        <option value="9">Patrocinador VIP</option>
+                    </select>
+                </div>
+                <div class="mb-3 text-center">
+                    <label for="rol" class="form-label">Rol</label>
+                    <input type="text" class="form-control-custom" placeholder="Rol" id="rol" formControlName="rol"
+                        required>
+                </div>
+                <div class="mb-4 text-center">
+                     <label for="dni" class="form-label">DNI</label>
+                    <input type="text" class="form-control-custom" id="dni" placeholder="DNI con letra"
+                        formControlName="dni" required>
+
+                </div>
+                <button type="submit" class="btn-custom">Crear</button>
+            </form>
+
+            }
+        </div>
+    </div>
+</main>

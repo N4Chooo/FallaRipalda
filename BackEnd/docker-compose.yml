@@ -1,0 +1,20 @@
+services:
+    mariadb-server:
+        container_name: servidor_db
+        image: mariadb
+        ports:
+            - "3307:3306"
+        restart: unless-stopped
+        environment:
+            MYSQL_USER: root
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - db_mysql:/var/lib/mysql:delegated
+        networks:
+            - project_network
+
+volumes:
+    db_mysql:
+
+networks:
+    project_network:

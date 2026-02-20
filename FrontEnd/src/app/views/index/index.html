@@ -1,0 +1,162 @@
+
+<div class="container-fluid p-0 mx-auto  border-bottom border-2 border-dark">
+    <div class="jumbotron-custom pb-md-5">
+        <div class="jumbotron-bg"></div>
+        <div class="jumbotron-content row justify-content-between mx-auto">
+            <div class="col-lg-5 col-md-12 text-center mt-lg-5 ms-lg-2 ms-md-auto">
+                <h1 class="mt-lg-5 ms-lg-5 ms-md-auto">Falla Ripalda Sogueros</h1>
+            </div>
+            <div class="col-lg-3 col-12 d-none d-md-flex flex-column">
+                <div class="d-flex mx-auto logo-c">
+                    <img class="logo" src="./img/color.jpeg" alt="menu" width="30">
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuMd">
+                    <i class="bi bi-arrow-bar-down fs-6 drop-i py-1 px-2"></i>
+                    <!-- hover y desplegado #E28E52
+                        Cambiar flecha hacia arriba cuando este desplegada
+                        -->
+                </button> 
+                <div class="collapse navbar-collapse menu text-center mx-auto mt-3" id="menuMd">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        @if (!authService.isLoggedIn()) {
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/register">Registrarse</a>
+                        </li>
+                        } @else {
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/noticias">Área Falleros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="onLogout()" style="cursor:pointer">Salir</a>
+                        </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/fallas">Fallas</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <section class="row">
+        <article class="col-12 mx-auto about_us">
+            <h1 class="text-center mt-5">Sobre nosotros</h1>
+        </article>
+    </section>
+</div>
+<div class="row mt-4 justify-content-center mx-auto">
+    <div class="col-md-12 col-lg-5 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="img/Bocetos_Falleras/LUNA.jpg" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Fallera Mayor 2026</h5>
+                <p class="project-extra">
+                    Luna
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-5 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="img/Bocetos_Falleras/CARMELA.jpg" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Fallera Infantil 2026</h5>
+                <p class="project-extra">
+                    Carmela
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-5 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto">
+            <img src="{{falla[0].sketch}}" class="card-img-top rounded" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Boceto Falla Mayor</h5>
+                <p class="project-extra">
+                    Boceto Falla Mayor
+                </p>
+                <button class="btn" data-bs-toggle="modal" data-bs-target="#modalMemoria1">
+                    Más info
+                </button>
+            </div>
+        </div>
+        <div class="modal fade" id="modalMemoria1" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Falla Mayor - {{falla[0].title}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <p class="mb-1"><strong>Lema:</strong> {{falla[0].title}}</p>
+                            <p class="mb-0"><strong>Artista:</strong>{{falla[0].artist}}</p>
+                        </div>
+
+
+                        <h6 class="mt-2">Idea general</h6>
+                            <p>{{falla[0].criticism}}</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-5 col-sm-12 p-4">
+        <div class="card card-higher text-center w-50 mx-auto imag">
+            <img src="{{falla[1].sketch}}" class="card-img-top rounded imag" alt="">
+            <div class="card-body">
+                <h5 class="card-title card-s">Boceto Falla Infantil</h5>
+                <p class="project-extra">
+                    Boceto Falla Infantil
+                </p>
+                <button class="btn" data-bs-toggle="modal" data-bs-target="#modalMemoria2">
+                    Más info
+                </button>
+            </div>
+        </div>
+        <div class="modal fade" id="modalMemoria2" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title">Falla Menor - {{falla[1].title}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <p class="mb-1"><strong>Lema:</strong> {{falla[1].title}}</p>
+                            <p class="mb-0"><strong>Artista:</strong>{{falla[1].artist}}</p>
+                        </div>
+
+                        <div class="memoria-infantil">
+                           <p>{{falla[1].criticism}}</p>
+                        </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

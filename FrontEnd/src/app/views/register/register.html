@@ -1,0 +1,37 @@
+<app-header [active]="active"></app-header>
+
+<main class="container-fluid body">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-5">
+            <div class="container-custom text-center">
+                <h2 class="mb-4">REGISTRATE</h2>
+
+                <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" method="post">
+                    <div class="mb-4">
+                        <input type="text" class="form-control-custom" placeholder="DNI con letra" id="dni" formControlName="dni" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" class="form-control-custom" placeholder="Nombre y Apellido" id="nombre" formControlName="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control-custom" placeholder="Email" id="mail" formControlName="mail" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" class="form-control-custom" placeholder="Contraseña (min 6 caracteres)" id="contraseña" formControlName="contraseña" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="checkbox" class="form-check-input-custom" id="terminos" formControlName="terminos" required>
+                        <label class="form-check-label-custom" for="terminos">Acepto los términos y condiciones</label>
+                    </div>
+                    <button type="submit" class="btn-custom">Registrarse</button>
+                </form>
+
+                <div style="margin-top: 20px;">
+                    <a routerLink="/login" routerLinkActive="active" style="color: var(--color-purple); font-weight: bold;">Tienes cuenta?, Inicia sesión</a>
+                    <br>
+                    <a routerLink="/index" routerLinkActive="active" style="color: var(--color-purple); font-weight: bold;">Volver a inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
