@@ -19,7 +19,6 @@ export class Index {
   public getResponse(): void {
     this.data.getMonuments2026().subscribe((response) => {
       this.falla = response;
-      console.log( this.falla);
       this.cdr.markForCheck()
     })
   }

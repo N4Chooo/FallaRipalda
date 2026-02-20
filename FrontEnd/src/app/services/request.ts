@@ -21,7 +21,7 @@ export class Request {
   private sponsors = "http://127.0.0.1:8000/api/sponsors";
   private loginApi = "http://127.0.0.1:8000/api/login";
   public userName = '';
-  
+
 
   public createUser(userData: any): Observable<any> {
     return this.http.post<any>(this.user, userData);
@@ -104,15 +104,14 @@ export class Request {
   public getMonuments(): Observable<any> {
     return this.http.get<any>(this.fallas)
   }
- 
+
   public getEvents(month: string): Observable<any> {
     if (month == ''){
       return this.http.get<any>(this.events);
     }
     else{
-      console.log(`${this.events}?year=${month}`)
       return this.http.get<any>(`${this.events}?month=${month}`);
     }
-    
+
   }
 }
