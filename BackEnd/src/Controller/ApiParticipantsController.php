@@ -125,7 +125,7 @@ final class ApiParticipantsController extends AbstractController
         $participant->setName($data['name']);
         $participant->setCategory($data['category']);
         $participant->setRewards($data['reward']);
-        if ($data['payment'] == 0) {
+        if ($data['payment'] == '0') {
             $status = false;
         } else {
             $status = true;
@@ -184,9 +184,9 @@ final class ApiParticipantsController extends AbstractController
             $participant->setRewards($data['reward']);
         }
         if (isset($data['payment'])) {
-            if ($data['payment'] == 0) {
+            if ($data['payment'] == '0') {
                 $status = false;
-            } elseif ($data['payment'] == 1) {
+            } elseif ($data['payment'] == '1') {
                 $status = true;
             }
         }
