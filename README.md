@@ -29,25 +29,26 @@ Asegúrate de tener instalado en tu máquina:
 Sigue estos pasos estrictamente en orden para configurar el entorno.
 
 # 1. Clonar el repositorio
-
+<pre>
 git clone <URL_DEL_REPOSITORIO>
 cd <NOMBRE_DE_LA_CARPETA>
+</pre>
 
 #  2. Instalar dependencias del Backend
 Navega a la carpeta del servidor e instala las dependencias de PHP:
 
-Bash
+<pre>
 cd back
 composer install
-
+</pre>
 
 # 3. Instalar dependencias del Frontend
 En una nueva terminal (o volviendo atrás), navega a la carpeta del cliente e instala las dependencias de Node:
 
-Bash
+<pre>
 cd ../front  # O desde la raíz: cd front
 npm install
-
+</pre>
 
 # 4. Base de Datos y Docker (Nota: si quereis la bbdd original contactad a cualquier miembro del equipo)
 Para que la aplicación funcione, necesitamos levantar la base de datos y configurarla correctamente.
@@ -55,14 +56,17 @@ Para que la aplicación funcione, necesitamos levantar la base de datos y config
 ### 4.1. Levantar contenedores
 Asegúrate de estar en la raíz del proyecto (o donde esté tu archivo docker-compose.yml) y ejecuta:
 
-Bash
+<pre>
 docker compose up -d
+</pre>
+  
 ### 4.2. Configurar variables de entorno
 Ve a la carpeta back. Renombra el archivo .env.example a .env.local o .env y configura la conexión a la base de datos para que coincida con la configuración de tu Docker:
 
 Fragmento de código
 ### Ejemplo en back/.env
 DATABASE_URL="mysql://usuario:password@127.0.0.1:3307/nombre_bbdd?serverVersion=..."
+
 ### 4.3. Crear la Base de Datos
 Dentro de la carpeta back, ejecuta el siguiente comando para crear la base de datos vacía:
 
@@ -75,9 +79,9 @@ Si tienes un archivo SQL para importar datos iniciales, importalos.
 
 Una vez importada la base de datos, ejecuta el comando para forzar la actualización del esquema:
 
-Bash
+<pre>
 php bin/console doctrine:schema:update --dump-sql --force
-
+</pre>
 
 
 # 5. Ejecutar la Aplicación
@@ -86,15 +90,17 @@ Necesitarás dos terminales abiertas simultáneamente.
 ### 5.1 Terminal 1: Backend (Symfony)
 Dentro de la carpeta back:
 
-Bash
+<pre>
 symfony serve
+</pre>
 El backend se ejecutará generalmente en http://localhost:8000
 
 ###  5.2 Terminal 2: Frontend (Angular)
 Dentro de la carpeta front:
 
-Bash
+<pre>
 ng serve
+</pre>
 El frontend estará disponible en http://localhost:4200
 
 
