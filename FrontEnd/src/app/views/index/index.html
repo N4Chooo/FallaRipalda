@@ -6,7 +6,7 @@
             <div class="col-lg-5 col-md-12 text-center mt-lg-5 ms-lg-2 ms-md-auto">
                 <h1 class="mt-lg-5 ms-lg-5 ms-md-auto">Falla Ripalda Sogueros</h1>
             </div>
-            <div class="col-lg-3 col-12 d-none d-md-flex flex-column">
+            <div class="col-lg-3 col-12 d-sm-none d-none d-md-flex flex-column">
                 <div class="d-flex mx-auto logo-c">
                     <img class="logo" src="./img/color.jpeg" alt="menu" width="30">
                 </div>
@@ -15,7 +15,7 @@
                     <!-- hover y desplegado #E28E52
                         Cambiar flecha hacia arriba cuando este desplegada
                         -->
-                </button> 
+                </button>
                 <div class="collapse navbar-collapse menu text-center mx-auto mt-3" id="menuMd">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         @if (!authService.isLoggedIn()) {
@@ -39,6 +39,40 @@
                     </ul>
                 </div>
             </div>
+
+          <div class="col-lg-3 col-12 d-md-none d-sm-flex flex-column">
+            <div class="d-flex mx-auto logo-c">
+              <img class="logo" src="./img/color.jpeg" alt="menu" width="30">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuSm">
+              <i class="bi bi-arrow-bar-down fs-6 drop-i py-1 px-2"></i>
+              <!-- hover y desplegado #E28E52
+                  Cambiar flecha hacia arriba cuando este desplegada
+                  -->
+            </button>
+            <div class="collapse navbar-collapse menu text-center mx-auto mt-3" id="menuSm">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                @if (!authService.isLoggedIn()) {
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/register">Registrarse</a>
+                  </li>
+                } @else {
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/noticias">Área Falleros</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" (click)="onLogout()" style="cursor:pointer">Salir</a>
+                  </li>
+                }
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/fallas">Fallas</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
     </div>
 </div>
