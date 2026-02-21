@@ -91,7 +91,7 @@ export class Request {
 
   public logout() {
     localStorage.removeItem(this.AUTH_KEY);
-    localStorage.removeItem('user_roles');
+    localStorage.removeItem('user_role');
     localStorage.removeItem('user_name');
     this.router.navigate(['/index']);
   }
