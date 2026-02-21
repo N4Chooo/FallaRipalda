@@ -1,6 +1,6 @@
 services:
     mariadb-server:
-        container_name: servidor_db
+        container_name: db_fallaRipalda
         image: mariadb
         ports:
             - "3307:3306"
