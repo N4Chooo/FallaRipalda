@@ -28,25 +28,28 @@ Asegúrate de tener instalado en tu máquina:
 
 Sigue estos pasos estrictamente en orden para configurar el entorno.
 
-### 1. Clonar el repositorio
+# 1. Clonar el repositorio
 
 git clone <URL_DEL_REPOSITORIO>
 cd <NOMBRE_DE_LA_CARPETA>
 
-###  2. Instalar dependencias del Backend
+#  2. Instalar dependencias del Backend
 Navega a la carpeta del servidor e instala las dependencias de PHP:
 
 Bash
 cd back
 composer install
-### 3. Instalar dependencias del Frontend
+
+
+# 3. Instalar dependencias del Frontend
 En una nueva terminal (o volviendo atrás), navega a la carpeta del cliente e instala las dependencias de Node:
 
 Bash
 cd ../front  # O desde la raíz: cd front
 npm install
 
-### 4. Base de Datos y Docker
+
+# 4. Base de Datos y Docker
 Para que la aplicación funcione, necesitamos levantar la base de datos y configurarla correctamente.
 
 ### 4.1. Levantar contenedores
@@ -58,7 +61,7 @@ docker compose up -d
 Ve a la carpeta back. Renombra el archivo .env.example a .env.local o .env y configura la conexión a la base de datos para que coincida con la configuración de tu Docker:
 
 Fragmento de código
-# Ejemplo en back/.env
+### Ejemplo en back/.env
 DATABASE_URL="mysql://usuario:password@127.0.0.1:3307/nombre_bbdd?serverVersion=..."
 ### 4.3. Crear la Base de Datos
 Dentro de la carpeta back, ejecuta el siguiente comando para crear la base de datos vacía:
@@ -74,7 +77,9 @@ Una vez importada la base de datos, ejecuta el comando para forzar la actualizac
 Bash
 php bin/console doctrine:schema:update --dump-sql --force
 
-### 5. Ejecutar la Aplicación
+
+
+# 5. Ejecutar la Aplicación
 Necesitarás dos terminales abiertas simultáneamente.
 
 ### 5.1 Terminal 1: Backend (Symfony)
@@ -90,6 +95,8 @@ Dentro de la carpeta front:
 Bash
 ng serve
 El frontend estará disponible en http://localhost:4200
+
+
 
 ### 6. Solución de Problemas
 Error de Puertos: Si Docker falla, asegúrate de que el puerto 3307 no esté siendo usado por otro servicio de MySQL local.
