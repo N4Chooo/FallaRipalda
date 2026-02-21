@@ -57,7 +57,7 @@ Asegúrate de estar en la raíz del proyecto (o donde esté tu archivo docker-co
 
 Bash
 docker compose up -d
-## 4.2. Configurar variables de entorno
+### 4.2. Configurar variables de entorno
 Ve a la carpeta back. Renombra el archivo .env.example a .env.local o .env y configura la conexión a la base de datos para que coincida con la configuración de tu Docker:
 
 Fragmento de código
