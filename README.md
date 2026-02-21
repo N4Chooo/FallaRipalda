@@ -98,5 +98,5 @@ El frontend estará disponible en http://localhost:4200
 
 
 
-### 6. Solución de Problemas
+# 6. Solución de Problemas
 Error de Puertos: Si Docker falla, asegúrate de que el puerto 3307 no esté siendo usado por otro servicio de MySQL local.
