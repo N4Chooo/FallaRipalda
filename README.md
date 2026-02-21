@@ -49,7 +49,7 @@ cd ../front  # O desde la raíz: cd front
 npm install
 
 
-# 4. Base de Datos y Docker
+# 4. Base de Datos y Docker (Nota: si quereis la bbdd original contactad a cualquier miembro del equipo)
 Para que la aplicación funcione, necesitamos levantar la base de datos y configurarla correctamente.
 
 ### 4.1. Levantar contenedores
