@@ -66,8 +66,9 @@ DATABASE_URL="mysql://usuario:password@127.0.0.1:3307/nombre_bbdd?serverVersion=
 ### 4.3. Crear la Base de Datos
 Dentro de la carpeta back, ejecuta el siguiente comando para crear la base de datos vacía:
 
-Bash
+<pre>
 php bin/console doctrine:database:create
+</pre>
 
 ### 4.4. Importar y Actualizar el Esquema
 Si tienes un archivo SQL para importar datos iniciales, importalos.
