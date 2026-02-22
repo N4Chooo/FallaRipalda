@@ -1,0 +1,48 @@
+FROM php:8.3-fpm
+
+# Instalar extensiones necesarias
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    libicu-dev \
+    libonig-dev \
+    libxml2-dev \
+    unzip \
+    git \
+    && docker-php-ext-install \
+    pdo \
+    pdo_mysql \
+    mbstring \
+    intl \
+    opcache \
+    xml \
+    zip \
+    && apt-get clean
+
+# Instalar Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Instalar Nginx
+RUN apt-get update && apt-get install -y nginx
+
+# Copiar configuración de Nginx
+COPY docker/nginx.conf /etc/nginx/sites-available/default
+
+# Directorio de trabajo
+WORKDIR /app
+
+# Copiar proyecto
+COPY . .
+
+# Instalar dependencias
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+# Permisos
+RUN chown -R www-data:www-data /app/var
+
+# Script de inicio
+COPY railway-start.sh /railway-start.sh
+RUN chmod +x /railway-start.sh
+
+EXPOSE 80
+
+CMD ["/railway-start.sh"]
