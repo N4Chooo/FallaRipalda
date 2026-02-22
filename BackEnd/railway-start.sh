@@ -20,8 +20,5 @@ sleep 3
 echo "▶ Checking PHP-FPM port..."
 ss -tlnp | grep 9000 || echo "PHP-FPM NOT listening on 9000"
 
-echo "▶ Checking Nginx port..."
-ss -tlnp | grep 8080 || echo "Nginx NOT listening on 8080"
-
-echo "▶ Starting Nginx on port ${PORT:-80}..."
-nginx -g "daemon off;"
+echo "▶ Starting Nginx on port ${PORT}..."
+nginx -e /dev/stderr -g "daemon off;"
