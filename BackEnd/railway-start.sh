@@ -4,7 +4,7 @@ echo "▶ Clearing cache..."
 php bin/console cache:clear --env=prod --no-warmup
 
 echo "▶ Creating schema..."
-php bin/console doctrine:schema:create --env=prod || true
+php bin/console doctrine:schema:update --env=prod || true
 
 echo "▶ Warming up cache..."
 php bin/console cache:warmup --env=prod
