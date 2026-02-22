@@ -4,13 +4,13 @@ echo "▶ Clearing cache..."
 php bin/console cache:clear --env=prod --no-warmup
 
 echo "▶ Creating schema..."
-php bin/console doctrine:schema:update --env=prod --force
+php bin/console doctrine:schema:create --env=prod || true
 
 echo "▶ Warming up cache..."
 php bin/console cache:warmup --env=prod
 
 echo "▶ Starting PHP-FPM..."
-php-fpm8.3 -D
+php-fpm -D
 
 echo "▶ Waiting for PHP-FPM..."
 sleep 2
