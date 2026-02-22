@@ -4,7 +4,7 @@ nelmio_cors:
         allow_origin:  
         - 'http://localhost:4200'
         - 'https://falla-ripalda-9xoxdpgdl-n4chooos-projects.vercel.app'
-        - 'https://falla-ripalda.vercel.app/'
+        - 'https://falla-ripalda.vercel.app'
         allow_methods: [ 'GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE' ]
         allow_headers: [ 'Content-Type', 'Authorization' ]
         expose_headers: [ 'Link' ]
