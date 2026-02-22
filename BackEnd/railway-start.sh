@@ -13,7 +13,7 @@ echo "▶ Starting PHP-FPM..."
 php-fpm -D
 
 echo "▶ Waiting for PHP-FPM..."
-sleep 2
+sleep 5
 
 echo "▶ Starting Nginx..."
 nginx -g "daemon off;"
