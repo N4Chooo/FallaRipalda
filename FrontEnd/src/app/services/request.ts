@@ -10,16 +10,16 @@ import { catchError, map, of, tap, Observable } from 'rxjs';
 export class Request {
   private http = inject(HttpClient);
   private router = inject(Router);
-  private user = "http://127.0.0.1:8000/api/register";
+  private user = "https://fallaripalda-production.up.railway.app/api/register";
   private falleros = "http://127.0.0.1:8000/api/participants";  //se puede filtrar por status(pagado o pendiente), rol,dni o category
-  private fallas26 = "http://127.0.0.1:8000/api/monuments?year=2026";
-  private fallas = "http://127.0.0.1:8000/api/monuments";//se puede filtrar por year
-  private llibret = "http://127.0.0.1:8000/api/books";  //se puede filtrar por year
-  private events = "http://127.0.0.1:8000/api/events";  //se puede filtrar por month
-  private fees = "http://127.0.0.1:8000/api/fees";
-  private users = "http://127.0.0.1:8000/api/user";
-  private sponsors = "http://127.0.0.1:8000/api/sponsors";
-  private loginApi = "http://127.0.0.1:8000/api/login";
+  private fallas26 = "https://fallaripalda-production.up.railway.app/api/monuments?year=2026";
+  private fallas = "https://fallaripalda-production.up.railway.app/api/monuments";//se puede filtrar por year
+  private llibret = "https://fallaripalda-production.up.railway.app/api/books";  //se puede filtrar por year
+  private events = "https://fallaripalda-production.up.railway.app/api/events";  //se puede filtrar por month
+  private fees = "https://fallaripalda-production.up.railway.app/api/fees";
+  private users = "https://fallaripalda-production.up.railway.app/api/user";
+  private sponsors = "https://fallaripalda-production.up.railway.app/api/sponsors";
+  private loginApi = "https://fallaripalda-production.up.railway.app/api/login";
   public userName = '';
 
 
