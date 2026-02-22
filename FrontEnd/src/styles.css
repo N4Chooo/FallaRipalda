@@ -369,4 +369,20 @@ li:hover{
   .menu {
     width: 100%;            
   }
+   .drop-i {
+    transition: color 0.25s ease, border-color 0.25s ease; 
+    transform: none !important;
+  }
+
+  .drop-i:hover {
+    transform: none !important;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .drop-i {
+    transform: none !important;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .drop-i:hover {
+    transform: none !important;
+  }
 }
