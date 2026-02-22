@@ -50,52 +50,15 @@ cd ../front  # O desde la raíz: cd front
 npm install
 </pre>
 
-# 4. Base de Datos y Docker (Nota: si quereis la bbdd original contactad a cualquier miembro del equipo)
-Para que la aplicación funcione, necesitamos levantar la base de datos y configurarla correctamente.
-
-### 4.1. Levantar contenedores
-Asegúrate de estar en la raíz del proyecto (o donde esté tu archivo docker-compose.yml) y ejecuta:
-
-<pre>
-docker compose up -d
-</pre>
-  
-### 4.2. Configurar variables de entorno
-Ve a la carpeta back. Renombra el archivo .env.example a .env.local o .env y configura la conexión a la base de datos para que coincida con la configuración de tu Docker:
-
-Fragmento de código
-### Ejemplo en back/.env
-DATABASE_URL="mysql://usuario:password@127.0.0.1:3307/nombre_bbdd?serverVersion=..."
-
-### 4.3. Crear la Base de Datos
-Dentro de la carpeta back, ejecuta el siguiente comando para crear la base de datos vacía:
-
-<pre>
-php bin/console doctrine:database:create
-</pre>
-
-### 4.4. Importar y Actualizar el Esquema
-Si tienes un archivo SQL para importar datos iniciales, importalos.
-
-Una vez importada la base de datos, ejecuta el comando para forzar la actualización del esquema:
-
-<pre>
-php bin/console doctrine:schema:update --dump-sql --force
-</pre>
+# 4. Base de Datos y Docker:
+El backend y la bbdd han sido desplegadas y ya esta todo configurado.
 
 
 # 5. Ejecutar la Aplicación
-Necesitarás dos terminales abiertas simultáneamente.
+Necesitarás una terminal abierta.
 
-### 5.1 Terminal 1: Backend (Symfony)
-Dentro de la carpeta back:
 
-<pre>
-symfony serve
-</pre>
-El backend se ejecutará generalmente en http://localhost:8000
-
-###  5.2 Terminal 2: Frontend (Angular)
+###  5.2 Terminal : Frontend (Angular)
 Dentro de la carpeta front:
 
 <pre>
