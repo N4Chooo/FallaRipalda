@@ -9,7 +9,7 @@ Bienvenido al repositorio del proyecto. Esta aplicación es una "Falla" web que 
 
 ## falla-ripalda.vercel.app
 
-### INSTRUCCIONES PARA USAR LA APP LOCAL
+# INSTRUCCIONES PARA USAR LA APP LOCAL
 
 ##  Tecnologías
 
