@@ -1,80 +1,80 @@
 
-<div class="container-fluid p-0 mx-auto  border-bottom border-2 border-dark">
-    <div class="jumbotron-custom pb-md-5">
-        <div class="jumbotron-bg"></div>
-        <div class="jumbotron-content row justify-content-between mx-auto">
-            <div class="col-lg-5 col-md-12 text-center mt-lg-5 ms-lg-2 ms-md-auto">
-                <h1 class="mt-lg-5 ms-lg-5 ms-md-auto">Falla Ripalda Sogueros</h1>
-            </div>
-            <div class="col-lg-3 col-12 d-sm-none d-none d-md-flex flex-column">
-                <div class="d-flex mx-auto logo-c">
-                    <img class="logo" src="./img/color.jpeg" alt="menu" width="30">
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuMd">
-                    <i class="bi bi-arrow-bar-down fs-6 drop-i py-1 px-2"></i>
-                    <!-- hover y desplegado #E28E52
-                        Cambiar flecha hacia arriba cuando este desplegada
-                        -->
-                </button>
-                <div class="collapse navbar-collapse menu text-center mx-auto mt-3" id="menuMd">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        @if (!authService.isLoggedIn()) {
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/register">Registrarse</a>
-                        </li>
-                        } @else {
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/noticias">Área Falleros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" (click)="onLogout()" style="cursor:pointer">Salir</a>
-                        </li>
-                        }
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/fallas">Fallas</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<div class="container-fluid p-0 mx-auto border-bottom border-2 border-dark">
+  <div class="jumbotron-custom pb-md-5">
+    <div class="jumbotron-bg"></div>
+    <div class="jumbotron-content row justify-content-between mx-auto">
 
-          <div class="col-lg-3 col-12 d-md-none d-sm-flex flex-column">
-            <div class="d-flex mx-auto logo-c">
-              <img class="logo" src="./img/color.jpeg" alt="menu" width="30">
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuSm">
-              <i class="bi bi-arrow-bar-down fs-6 drop-i py-1 px-2"></i>
-              <!-- hover y desplegado #E28E52
-                  Cambiar flecha hacia arriba cuando este desplegada
-                  -->
-            </button>
-            <div class="collapse navbar-collapse menu text-center mx-auto mt-3" id="menuSm">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                @if (!authService.isLoggedIn()) {
-                  <li class="nav-item">
-                    <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" routerLink="/register">Registrarse</a>
-                  </li>
-                } @else {
-                  <li class="nav-item">
-                    <a class="nav-link" routerLink="/noticias">Área Falleros</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" (click)="onLogout()" style="cursor:pointer">Salir</a>
-                  </li>
-                }
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/fallas">Fallas</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+      <!-- Título: igual en PC, centrado en móvil -->
+      <div class="col-lg-5 col-12 text-center mt-lg-5 ms-lg-2">
+        <h1 class="mt-lg-5 ms-lg-5">Falla Ripalda Sogueros</h1>
+      </div>
+
+      <!-- Menú PC (lg en adelante): se queda exactamente igual -->
+      <div class="col-lg-3 d-none d-lg-flex flex-column">
+        <div class="d-flex mx-auto logo-c">
+          <img class="logo" src="./img/color.jpeg" alt="menu" width="30">
         </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuLg">
+          <i class="bi bi-arrow-bar-down fs-6 drop-i py-1 px-2"></i>
+        </button>
+        <div class="collapse navbar-collapse menu text-center mx-auto mt-3" id="menuLg">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            @if (!authService.isLoggedIn()) {
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/register">Registrarse</a>
+              </li>
+            } @else {
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/noticias">Área Falleros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="onLogout()" style="cursor:pointer">Salir</a>
+              </li>
+            }
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/fallas">Fallas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Menú móvil/tablet (menor que lg): logo centrado, menú debajo -->
+      <div class="col-12 d-flex d-lg-none flex-column align-items-center py-3">
+        <div class="d-flex justify-content-center mb-2">
+          <img class="logo" src="./img/color.jpeg" alt="menu" width="60">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuMobile">
+          <i class="bi bi-arrow-bar-down fs-6 drop-i py-1 px-2"></i>
+        </button>
+        <div class="collapse navbar-collapse menu text-center mt-2 w-100" id="menuMobile">
+          <ul class="navbar-nav mx-auto mb-2">
+            @if (!authService.isLoggedIn()) {
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/register">Registrarse</a>
+              </li>
+            } @else {
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/noticias">Área Falleros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="onLogout()" style="cursor:pointer">Salir</a>
+              </li>
+            }
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/fallas">Fallas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
     </div>
+  </div>
 </div>
 
 <div class="container-fluid">

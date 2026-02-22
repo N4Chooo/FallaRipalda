@@ -342,3 +342,31 @@ li:hover{
     border: solid #E28E52 1px;
     color: #E28E52;
 }
+@media (max-width: 991.98px) {
+
+  .jumbotron-custom {
+    height: auto;           /* deja de ser fijo, crece con el contenido */
+    padding-bottom: 1.5rem;
+  }
+
+  .jumbotron-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .jumbotron-content h1 {
+    font-size: 1.4rem;
+    margin-top: 1rem !important;
+    margin-left: 0 !important;
+  }
+
+  .logo {
+    height: 90px;           /* de 225px a 90px */
+    width: 90px;
+  }
+
+  .menu {
+    width: 100%;            /* de 225px fijo a ancho completo */
+  }
+}
