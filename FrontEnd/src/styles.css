@@ -345,7 +345,7 @@ li:hover{
 @media (max-width: 991.98px) {
 
   .jumbotron-custom {
-    height: auto;           /* deja de ser fijo, crece con el contenido */
+    height: auto;          
     padding-bottom: 1.5rem;
   }
 
@@ -362,11 +362,11 @@ li:hover{
   }
 
   .logo {
-    height: 90px;           /* de 225px a 90px */
-    width: 90px;
+    height: 150px;           
+    width: 150px;
   }
 
   .menu {
-    width: 100%;            /* de 225px fijo a ancho completo */
+    width: 100%;            
   }
 }
