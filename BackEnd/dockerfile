@@ -1,48 +1,48 @@
 FROM php:8.3-fpm
 
-# Instalar extensiones necesarias
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     libicu-dev \
     libonig-dev \
     libxml2-dev \
+    libxslt-dev \
     unzip \
     git \
-    && docker-php-ext-install \
+    nginx \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
     mbstring \
     intl \
     opcache \
-    xml \
     zip \
-    && apt-get clean
+    xml \
+    simplexml
 
-# Instalar Composer
+RUN php -m | grep pdo_mysql
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Instalar Nginx
-RUN apt-get update && apt-get install -y nginx
-
-# Copiar configuración de Nginx
-COPY docker/nginx.conf /etc/nginx/sites-available/default
-
-# Directorio de trabajo
 WORKDIR /app
 
-# Copiar proyecto
+# Copiar solo composer.json primero para aprovechar caché de Docker
+COPY composer.json composer.lock ./
+
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+
+# Copiar el resto del proyecto
 COPY . .
 
-# Instalar dependencias
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Ejecutar scripts post-install ahora que el código está disponible
+RUN composer run-script post-install-cmd --no-interaction || true
 
-# Permisos
-RUN chown -R www-data:www-data /app/var
+RUN mkdir -p var/cache var/log && chown -R www-data:www-data var public
 
-# Script de inicio
+COPY docker/nginx.conf /etc/nginx/sites-available/default
 COPY railway-start.sh /railway-start.sh
 RUN chmod +x /railway-start.sh
 
 EXPOSE 80
-
 CMD ["/railway-start.sh"]
