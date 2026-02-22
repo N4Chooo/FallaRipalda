@@ -2,11 +2,11 @@
 
 Bienvenido al repositorio del proyecto. Esta aplicación es una "Falla" web que consta de una arquitectura con **Symfony** en el backend y **Angular** en el frontend, utilizando **Docker** para la gestión de la base de datos.
 
-###WEB FUNCIONAL:
+### WEB FUNCIONAL:
 <img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/a7b290fc-aeed-4305-931a-a8b5e637820d" />
-##falla-ripalda.vercel.app
+## falla-ripalda.vercel.app
 
-###INSTRUCCIONES PARA USAR LA APP LOCAL
+### INSTRUCCIONES PARA USAR LA APP LOCAL
 
 ##  Tecnologías
 
