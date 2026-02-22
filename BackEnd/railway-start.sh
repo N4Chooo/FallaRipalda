@@ -3,8 +3,8 @@
 echo "▶ Clearing cache..."
 php bin/console cache:clear --env=prod --no-warmup
 
-echo "▶ Updating schema..."
-php bin/console doctrine:schema:update --force --env=prod
+echo "▶ Creating tables..."
+php bin/console doctrine:schema:create --env=prod
 
 echo "▶ Warming up cache..."
 php bin/console cache:warmup --env=prod
