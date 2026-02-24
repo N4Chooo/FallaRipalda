@@ -22,6 +22,7 @@ class ApiSecurityController extends AbstractController
         }
 
         return $this->json([
+            'dni' => $user->getDni(),
             'user' => $user->getUserIdentifier(),
             'name' => $user->getName(),
             'roles' => $user->getRoles(),

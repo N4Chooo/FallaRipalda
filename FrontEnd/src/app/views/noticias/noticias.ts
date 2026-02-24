@@ -17,7 +17,7 @@ export class Noticias {
   public events: any[] = [];
   public user: any = '';
   public fallero: any = '';
-  public ids: { [key: string]: string } = {};
+  public ids: { [key: string]: number } = {};
 
   public getResponse(month: string): void {
     this.data.getEvents(month).subscribe((response) => {
@@ -31,21 +31,17 @@ export class Noticias {
   }
 
   public participate(id: any) {
-    this.data.getUsers().subscribe((response) => {
-      this.usuario = response.find((item: any) => item.name === localStorage.getItem('user_name'));
-      this.cdr.markForCheck();
-      this.data.getFalleroDni(this.usuario.dni).subscribe((response) => {
+      this.data.getFalleroDni(localStorage.getItem('user_dni')).subscribe((response) => {
         this.fallero = response;
+        console.log(this.fallero)
         this.cdr.markForCheck();
         this.ids = { 
-            'PartId': this.fallero.id,
+            'PartId': this.fallero,
             'EvenId': id
         };
         this.data.addAssistant(this.ids).subscribe((response) => {
         })
       })
-    })
-
   }
 
   public onMonthChange(month: string) {

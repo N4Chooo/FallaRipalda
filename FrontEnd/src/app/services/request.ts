@@ -37,7 +37,7 @@ export class Request {
   }
 
   public getFalleroDni(dni:any): Observable<any> {
-    return this.http.get<any>(this.falleros, dni);
+    return this.http.get<any>(`${this.falleros}?dni=${dni}`);
   }
 
   public createFallero(fallero:any): Observable<any> {
@@ -75,6 +75,9 @@ export class Request {
         if (response.user) {
           localStorage.setItem('user_name', response.name);
         }
+       
+          console.log(response.dni);
+        
       })
     );
   }
@@ -102,6 +105,7 @@ export class Request {
     localStorage.removeItem(this.AUTH_KEY);
     localStorage.removeItem('user_role');
     localStorage.removeItem('user_name');
+    localStorage.removeItem('user_dni');
     this.router.navigate(['/index']);
   }
 
