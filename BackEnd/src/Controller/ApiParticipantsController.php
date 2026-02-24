@@ -95,7 +95,13 @@ final class ApiParticipantsController extends AbstractController
                 return new JsonResponse($data);
             }
         } else {
+
             foreach ($participants as $participant) {
+                $eventosNombres = [];
+                foreach ($participant->getEvent() as $event) {
+                    $eventosNombres[] = $event->getTitle();
+                }
+
                 $data[] = [
                     'id' => $participant->getId(),
                     'name' => $participant->getName(),
@@ -105,7 +111,7 @@ final class ApiParticipantsController extends AbstractController
                     'rol' => $participant->getRol(),
                     'dni' => $participant->getDni(),
                     'fee' => $participant->getFee()->getType(),
-                    'event' => $participant->getEvent(),
+                    'event' => $eventosNombres,
                 ];
             }
 

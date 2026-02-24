@@ -100,6 +100,7 @@ export class Gestion {
 
   public detail(falleroSelec: any): void {
     this.faller = falleroSelec;
+    console.log(this.faller);
     this.creation = false;
     this.edit = false;
     this.show = true;
