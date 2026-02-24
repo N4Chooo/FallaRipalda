@@ -4,27 +4,36 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="container-custom">
-                <h2 class="mb-3">Últimas Noticias</h2>
-                {{selectEvents}}
+                <h2 class="mb-3">Últimas Noticias</h2><br>
+                <h6>Estas apuntado a los siguientes eventos: {{selectEvents}}</h6>
+
+                <br>
                 @for(event of events; track $index; let i = $index){
-                    <div class="news-item mb-4 pb-3" style="border-bottom: 2px dashed #000;">
-                        <h3>{{event.title}}</h3>
-                        <p>{{event.description}}</p>
-                        @if(!authService.hasRole("ROLE_ADMIN")) {
-                        @if(!event.participated){
-                        <button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;"
-                (click)="participate(event)">Apuntarse</button>
-                        }@else{
-                            <button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;" disabled>Estas apuntado</button>
-                        }
+                <div class="news-item mb-4 pb-3" style="border-bottom: 2px dashed #000;">
+                    <h3>{{event.title}}</h3>
+                    <p>{{event.description}}</p>
+                    @if(!authService.hasRole("ROLE_ADMIN")) {
+                    @if (!eventid.includes(event.id)) {
+                    <button class="btn-secondary-custom" style="margin-right: 40px; margin-left: 50px;"
+                        (click)="participate(event)">
+                        Apuntarse
+                    </button>
+                    } @else {
+                    <button class="btn-secondary-custom" style="margin-right: 40px; margin-left: 50px;" disabled>
+                        Estás apuntado
+                    </button>
                     }
-                    </div>
+                    }
+                </div>
                 }
             </div>
         </div>
         <div class="container-custom col-lg-4 me-0">
             <h3 class="text-center">Calendario Eventos</h3>
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FMadrid&showPrint=0&mode=AGENDA&title&src=ZTNlNWJkZWE2ZTg3NjI0YjU1YzcyZjhhNTljYTZjZjY0YzhhZjMzMDI3OTAyODZkYzBhNGFjZjc5OTEzZjRmNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZXMuc3BhaW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%239e69af&color=%230b8043" style="border:solid 1px #777; display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; width: 100%; border-radius: 10px; height: 90%; margin-bottom: 15%;"  frameborder="0" scrolling="no"></iframe>
+            <iframe
+                src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FMadrid&showPrint=0&mode=AGENDA&title&src=ZTNlNWJkZWE2ZTg3NjI0YjU1YzcyZjhhNTljYTZjZjY0YzhhZjMzMDI3OTAyODZkYzBhNGFjZjc5OTEzZjRmNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZXMuc3BhaW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%239e69af&color=%230b8043"
+                style="border:solid 1px #777; display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; width: 100%; border-radius: 10px; height: 90%; margin-bottom: 15%;"
+                frameborder="0" scrolling="no"></iframe>
         </div>
-        </div>
+    </div>
 </main>

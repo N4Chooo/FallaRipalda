@@ -16,6 +16,7 @@ export class Noticias {
   public data = inject(Request);
   public events: any[] = [];
   public selectEvents:any = '';
+  public eventid:any = '';
   public user: any = '';
   public fallero: any = '';
   public ids: { [key: string]: number } = {};
@@ -28,16 +29,24 @@ export class Noticias {
     })
   }
 
+  public getEvents(): void {
+    this.data.getFalleroDni(localStorage.getItem('user_dni')).subscribe((response) => {
+      this.selectEvents = response[0].event;
+      this.eventid = response[0].eventId
+      this.cdr.markForCheck();
+      
+    })
+  }
+
   public ngOnInit() {
     this.getResponse(this.mes);
+    this.getEvents();
   }
 
   public participate(event: any) {
     event.participated = true;
       this.data.getFalleroDni(localStorage.getItem('user_dni')).subscribe((response) => {
         this.fallero = response;
-        this.selectEvents = response.events;
-        console.log(response)
         this.cdr.markForCheck();
         this.ids = { 
             'PartId': this.fallero[0].id,
