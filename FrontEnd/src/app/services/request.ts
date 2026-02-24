@@ -20,6 +20,7 @@ export class Request {
   private users = "https://fallaripalda-production.up.railway.app/api/user";
   private sponsors = "https://fallaripalda-production.up.railway.app/api/sponsors";
   private loginApi = "https://fallaripalda-production.up.railway.app/api/login";
+  private participate = "http://127.0.0.1:8000/api/participate";
   public userName = '';
 
 
@@ -27,8 +28,16 @@ export class Request {
     return this.http.post<any>(this.user, userData);
   }
 
+  public addAssistant(partId:any, eventId:any){
+    return this.http.post<any>(this.participate, partId, eventId);
+  }
+
   public getInfo(): Observable<any> {
     return this.http.get<any>(this.falleros);
+  }
+
+  public getFalleroDni(dni:any): Observable<any> {
+    return this.http.get<any>(this.falleros, dni);
   }
 
   public createFallero(fallero:any): Observable<any> {
@@ -112,6 +121,5 @@ export class Request {
     else{
       return this.http.get<any>(`${this.events}?month=${month}`);
     }
-
   }
 }

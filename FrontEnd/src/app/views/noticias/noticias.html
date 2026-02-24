@@ -9,6 +9,8 @@
                     <div class="news-item mb-4 pb-3" style="border-bottom: 2px dashed #000;">
                         <h3>{{event.title}}</h3>
                         <p>{{event.description}}</p>
+                        <button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;"
+                (click)="participate(event.id)">Apuntarse</button>
                     </div>
                 }
             </div>

@@ -26,6 +26,7 @@ final class ApiEventController extends AbstractController
                 foreach ($events as $event) {
                     if ($event->getDate()->format('m') == $month) {
                         $data[] = [
+                            'id' => $event->getId(),
                             'title' => $event->getTitle(),
                             'date' => $event->getDate()->format('Y-m-d'),
                             'description' => $event->getDescription(),
@@ -44,6 +45,7 @@ final class ApiEventController extends AbstractController
 
             foreach ($events as $event) {
                 $data[] = [
+                    'id' => $event->getId(),
                     'title' => $event->getTitle(),
                     'date' => $event->getDate()->format('Y-m-d'),
                     'description' => $event->getDescription(),
