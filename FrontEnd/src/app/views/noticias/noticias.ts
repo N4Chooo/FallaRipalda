@@ -17,7 +17,7 @@ export class Noticias {
   public events: any[] = [];
   public user: any = '';
   public fallero: any = '';
-  public ids: { [key: string]: string } = {}
+  public ids: { [key: string]: string } = {};
 
   public getResponse(month: string): void {
     this.data.getEvents(month).subscribe((response) => {

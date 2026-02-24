@@ -20,7 +20,7 @@ export class Request {
   private users = "https://fallaripalda-production.up.railway.app/api/user";
   private sponsors = "https://fallaripalda-production.up.railway.app/api/sponsors";
   private loginApi = "https://fallaripalda-production.up.railway.app/api/login";
-  private participate = "http://127.0.0.1:8000/api/participate";
+  private participate = "https://fallaripalda-production.up.railway.app/api/participate";
   public userName = '';
 
 
