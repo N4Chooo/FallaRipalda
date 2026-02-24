@@ -15,6 +15,7 @@ export class Noticias {
   public cdr = inject(ChangeDetectorRef);
   public data = inject(Request);
   public events: any[] = [];
+  public selectEvents:any = '';
   public user: any = '';
   public fallero: any = '';
   public ids: { [key: string]: number } = {};
@@ -35,6 +36,8 @@ export class Noticias {
     event.participated = true;
       this.data.getFalleroDni(localStorage.getItem('user_dni')).subscribe((response) => {
         this.fallero = response;
+        this.selectEvents = response.events;
+        console.log(response)
         this.cdr.markForCheck();
         this.ids = { 
             'PartId': this.fallero[0].id,

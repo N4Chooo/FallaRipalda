@@ -29,6 +29,11 @@ final class ApiParticipantsController extends AbstractController
             foreach ($participants as $participant) {
                 if ($dni) {
                     if ($participant->getDni() == $dni) {
+                        $eventosNombres = [];
+                        foreach ($participant->getEvent() as $event) {
+                            $eventosNombres[] = $event->getTitle();
+                            $id[] = $event->getId();
+                        }
                         $data[] = [
                             'id' => $participant->getId(),
                             'name' => $participant->getName(),
@@ -38,6 +43,8 @@ final class ApiParticipantsController extends AbstractController
                             'rol' => $participant->getRol(),
                             'dni' => $participant->getDni(),
                             'fee' => $participant->getFee()->getType(),
+                            'event' => $eventosNombres,
+                            'eventId' => $id,
                         ];
                     }
                 }
