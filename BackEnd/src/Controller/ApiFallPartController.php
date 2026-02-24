@@ -33,7 +33,7 @@ final class ApiFallPartController extends AbstractController
             if ($event && $participant) {
                 $event->addFallasParticipant($participant);
                 $em->flush();
-                return new JsonResponse(['status' => 'Fallero apuntado'], 200);
+                return new JsonResponse(['status' => 'Te has apuntado correctamente'], 200);
             }
             return new JsonResponse(['status' => 'No se encontró el evento o fallero en BD'], 404);
         }

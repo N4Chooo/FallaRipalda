@@ -75,9 +75,9 @@ export class Request {
         if (response.user) {
           localStorage.setItem('user_name', response.name);
         }
-       
-          console.log(response.dni);
-        
+        if (response.dni) {
+          localStorage.setItem('user_dni', response.dni);
+        }
       })
     );
   }

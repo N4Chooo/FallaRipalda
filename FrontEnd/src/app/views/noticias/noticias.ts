@@ -33,13 +33,13 @@ export class Noticias {
   public participate(id: any) {
       this.data.getFalleroDni(localStorage.getItem('user_dni')).subscribe((response) => {
         this.fallero = response;
-        console.log(this.fallero)
         this.cdr.markForCheck();
         this.ids = { 
-            'PartId': this.fallero,
+            'PartId': this.fallero[0].id,
             'EvenId': id
         };
         this.data.addAssistant(this.ids).subscribe((response) => {
+          alert(response.status)
         })
       })
   }
