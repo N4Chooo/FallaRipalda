@@ -18,22 +18,27 @@ final class ApiFallPartController extends AbstractController
     {
 
         $data = json_decode($request->getContent(), true);
+
+        if (!isset($data['EvenId']) || !isset($data['PartId'])) {
+            return new JsonResponse(['status' => 'Faltan llaves EvenId o PartId'], 400);
+        }
+
         $eventId = intval($data['EvenId']);
         $participantId = intval($data['PartId']);
-    if(isset($participantId) && isset($eventId)){
 
-        $event = $eventRepo->find($eventId);
-        $participant= $fallasRepository->find($participantId);
+        if ($eventId > 0 && $participantId > 0) {
+            $event = $eventRepo->find($eventId);
+            $participant = $fallasRepository->find($participantId);
 
-        $event->addFallasParticipant($participant);
-        $em->flush();
+            if ($event && $participant) {
+                $event->addFallasParticipant($participant);
+                $em->flush();
+                return new JsonResponse(['status' => 'Fallero apuntado'], 200);
+            }
+            return new JsonResponse(['status' => 'No se encontró el evento o fallero en BD'], 404);
+        }
 
-        return new JsonResponse(['status' => 'Fallero apuntado'], 200);
-
-    }else {
-
-        return new JsonResponse(['status' => 'Datos faltantes'], 400);
-    }
+        return new JsonResponse(['status' => 'IDs inválidos'], 400);
 
     }
 }

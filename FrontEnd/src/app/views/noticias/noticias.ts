@@ -34,13 +34,15 @@ export class Noticias {
     this.data.getUsers().subscribe((response) => {
       this.usuario = response.find((item: any) => item.name === localStorage.getItem('user_name'));
       this.cdr.markForCheck();
-    })
-    this.data.getFalleroDni(this.usuario.dni).subscribe((response) => {
-      this.fallero = response;
-      this.cdr.markForCheck();
-       this.ids['PartId'] = this.fallero.id;
-      this.ids['EvenId'] = id;
-      this.data.addAssistant(this.ids).subscribe((response) => {
+      this.data.getFalleroDni(this.usuario.dni).subscribe((response) => {
+        this.fallero = response;
+        this.cdr.markForCheck();
+        this.ids = { 
+            'PartId': this.fallero.id,
+            'EvenId': id
+        };
+        this.data.addAssistant(this.ids).subscribe((response) => {
+        })
       })
     })
 
