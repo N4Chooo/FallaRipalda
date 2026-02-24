@@ -13,26 +13,27 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/api/participate')]
 final class ApiFallPartController extends AbstractController
 {
-    #[Route('', methods: ['GET'], name: 'listAddEvents')]
-    public function list(Request $request, EntityManagerInterface $em, FallasParticipantsRepository $fallasRepository , EventsRepository $events ): JsonResponse
+    #[Route('', methods: ['POST'], name: 'listAddEvents')]
+    public function list(Request $request, EntityManagerInterface $em, FallasParticipantsRepository $fallasRepository , EventsRepository $eventRepo ): JsonResponse
     {
-        $participantId = $request->query->get('PartId');
-        $eventId = $request->query->get('EvenId');
-        $event = '';
-        $participant = '';
-    if($participantId && $eventId){
 
-        $event== $events->find($eventId);
-        $participant== $fallasRepository->find($participantId);
+        $data = json_decode($request->getContent(), true);
+        $eventId = intval($data['EvenId']);
+        $participantId = intval($data['PartId']);
+    if(isset($participantId) && isset($eventId)){
 
-        $events->addFallasParticipant($participant);
+        $event = $eventRepo->find($eventId);
+        $participant= $fallasRepository->find($participantId);
+
+        $event->addFallasParticipant($participant);
         $em->flush();
 
         return new JsonResponse(['status' => 'Fallero apuntado'], 200);
 
-    }
+    }else {
 
-    return new JsonResponse(['status' => 'Datos faltantes'], 404);
+        return new JsonResponse(['status' => 'Datos faltantes'], 400);
+    }
 
     }
 }

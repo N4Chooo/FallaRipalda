@@ -28,8 +28,8 @@ export class Request {
     return this.http.post<any>(this.user, userData);
   }
 
-  public addAssistant(partId:any, eventId:any){
-    return this.http.post<any>(this.participate, partId, eventId);
+  public addAssistant(ids:any,){
+    return this.http.post<any>(this.participate, ids);
   }
 
   public getInfo(): Observable<any> {
