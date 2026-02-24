@@ -14,6 +14,7 @@
                 <div class="news-item mb-4 pb-3" style="border-bottom: 2px dashed #000;">
                     <h3>{{event.title}}</h3>
                     <p>{{event.description}}</p>
+                    @if(!authService.hasRole("ROLE_GUEST")) {
                     @if(!authService.hasRole("ROLE_ADMIN")) {
                     @if (!eventid.includes(event.id)) {
                     <button class="btn-secondary-custom" style="margin-right: 40px; margin-left: 50px;"
@@ -25,6 +26,11 @@
                         Estás apuntado
                     </button>
                     }
+                    }
+                    }@else {
+                         <button class="btn-secondary-custom" style="margin-right: 40px; margin-left: 50px;" disabled>
+                        Estás en una sesion como invitado, no puedes apuntarte a eventos.
+                    </button>
                     }
                 </div>
                 }
