@@ -5,7 +5,9 @@
         <div class="col-lg-8">
             <div class="container-custom">
                 <h2 class="mb-3">Últimas Noticias</h2><br>
+                @if(!authService.hasRole("ROLE_ADMIN")) {
                 <h6>Estas apuntado a los siguientes eventos: {{selectEvents}}</h6>
+                }
 
                 <br>
                 @for(event of events; track $index; let i = $index){
