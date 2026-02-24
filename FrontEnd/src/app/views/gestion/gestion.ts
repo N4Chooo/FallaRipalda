@@ -13,18 +13,19 @@ import { Router } from '@angular/router';
 })
 export class Gestion {
   public active: string = 'gestion';
-   public router = inject(Router);
+  public router = inject(Router);
   public cdr = inject(ChangeDetectorRef)
   public data = inject(Request);
   public falleros: any[] = [];
-  public deletedFallero:{ [key: string]: string } = {};
+  public deletedFallero: { [key: string]: string } = {};
   public faller: any = '';
   public creation: boolean = false;
   public show: boolean = false;
   public listB: boolean = true;
   private fallero: { [key: string]: string } = {};
-  public edit:boolean = false;
-
+  public edit: boolean = false;
+  public paid: boolean = true;
+  public not_paid: boolean = true;
 
   gestionForm = new FormGroup({
     name: new FormControl('', { nonNullable: true }),
@@ -36,8 +37,8 @@ export class Gestion {
     dni: new FormControl('', { nonNullable: true }),
   })
 
-  
-  
+
+
 
   public getResponse(): void {
     this.data.getInfo().subscribe((response) => {
@@ -46,28 +47,28 @@ export class Gestion {
     })
   }
 
-  public getDelete(id:any): void {
+  public getDelete(id: any): void {
     this.data.deleteFallero(id).subscribe({
-        next: (response) => {
-          alert(response.status);
-        },
-        error: (err) => {
-          const errorMessage = err.error?.status || 'Ocurrió un error inesperado';
-          alert('Error: ' + errorMessage);
-        }
-      });
+      next: (response) => {
+        alert(response.status);
+      },
+      error: (err) => {
+        const errorMessage = err.error?.status || 'Ocurrió un error inesperado';
+        alert('Error: ' + errorMessage);
+      }
+    });
   }
- 
+
 
   public create(): void {
     this.creation = true;
     this.listB = false;
     this.show = false;
     this.edit = false;
-    
+
   }
 
-  public delete(id:any): void {
+  public delete(id: any): void {
     this.deletedFallero = { 'id': id };
     this.getDelete(this.deletedFallero);
     this.getResponse();
@@ -81,7 +82,23 @@ export class Gestion {
     this.getResponse();
   }
 
-  public detail(falleroSelec:any): void { 
+  public all(): void {
+    this.paid = true;
+    this.not_paid = true;
+  }
+
+  public paidFilter():void{
+    this.paid = true;
+    this.not_paid = false;
+  }
+
+  public notPaidFilter():void{
+    this.paid = false;
+    this.not_paid = true;
+  }
+
+
+  public detail(falleroSelec: any): void {
     this.faller = falleroSelec;
     this.creation = false;
     this.edit = false;
@@ -90,7 +107,7 @@ export class Gestion {
     this.getResponse();
   }
 
-  public editBtn(falleroSelec:any):void{
+  public editBtn(falleroSelec: any): void {
     this.creation = false;
     this.show = false;
     this.listB = true;
@@ -98,45 +115,45 @@ export class Gestion {
     let pay = "";
     let fee = "";
 
-    if(falleroSelec.payment_status == true){
-      pay= "1";
-    }else{
-      pay="0";
+    if (falleroSelec.payment_status == true) {
+      pay = "1";
+    } else {
+      pay = "0";
     }
     if (falleroSelec.fee == 'Adulto General') {
-    fee = "0";
-  } else if (falleroSelec.fee == 'Infantil') {
-    fee = "1";
-  } else if (falleroSelec.fee == 'Juvenil') {
-    fee = "2";
-  } else if (falleroSelec.fee == 'Jubilado') {
-    fee = "3";
-  } else if (falleroSelec.fee == 'Honor') {
-    fee = "4";
-  } else if (falleroSelec.fee == 'Familiar 3+ miembros') {
-    fee = "5";
-  } else if (falleroSelec.fee == 'Bebé (0-2 años)') {
-    fee = "6";
-  } else if (falleroSelec.fee == 'Colaborador Externo') {
-    fee = "7";
-  } else if (falleroSelec.fee == 'Simpatizante') {
-    fee = "8";
-  } else if (falleroSelec.fee == 'Patrocinador VIP') {
-    fee = "9";
-  }
+      fee = "0";
+    } else if (falleroSelec.fee == 'Infantil') {
+      fee = "1";
+    } else if (falleroSelec.fee == 'Juvenil') {
+      fee = "2";
+    } else if (falleroSelec.fee == 'Jubilado') {
+      fee = "3";
+    } else if (falleroSelec.fee == 'Honor') {
+      fee = "4";
+    } else if (falleroSelec.fee == 'Familiar 3+ miembros') {
+      fee = "5";
+    } else if (falleroSelec.fee == 'Bebé (0-2 años)') {
+      fee = "6";
+    } else if (falleroSelec.fee == 'Colaborador Externo') {
+      fee = "7";
+    } else if (falleroSelec.fee == 'Simpatizante') {
+      fee = "8";
+    } else if (falleroSelec.fee == 'Patrocinador VIP') {
+      fee = "9";
+    }
 
     this.editForm.patchValue({
-    id: falleroSelec.id,
-    name: falleroSelec.name,
-    category: falleroSelec.category,
-    reward: falleroSelec.rewards,
-    payment: pay, 
-    rol: falleroSelec.rol,
-    fee: fee,
-    dni: falleroSelec.dni
-});
-    this.cdr.markForCheck(); 
-  
+      id: falleroSelec.id,
+      name: falleroSelec.name,
+      category: falleroSelec.category,
+      reward: falleroSelec.rewards,
+      payment: pay,
+      rol: falleroSelec.rol,
+      fee: fee,
+      dni: falleroSelec.dni
+    });
+    this.cdr.markForCheck();
+
   }
 
   public ngOnInit() {
@@ -154,7 +171,7 @@ export class Gestion {
 
   }
 
-   public createFallEdit(id:string ,name: string, category: string, reward: string, payment: string, rol: string, fee: string, dni: string): void {
+  public createFallEdit(id: string, name: string, category: string, reward: string, payment: string, rol: string, fee: string, dni: string): void {
     this.fallero['id'] = id;
     this.fallero['name'] = name;
     this.fallero['category'] = category;
@@ -187,10 +204,10 @@ export class Gestion {
     }
   }
 
-  public onEdit(){
-    
+  public onEdit() {
+
     let rawData = this.editForm.getRawValue();
-    this.createFallEdit(rawData.id ,rawData.name, rawData.category, rawData.reward, rawData.payment, rawData.rol, rawData.fee, rawData.dni);
+    this.createFallEdit(rawData.id, rawData.name, rawData.category, rawData.reward, rawData.payment, rawData.rol, rawData.fee, rawData.dni);
     if (rawData.dni.length == 9) {
       this.data.updateFallero(this.fallero).subscribe({
         next: (response) => {
@@ -209,7 +226,7 @@ export class Gestion {
   }
 
   editForm = new FormGroup({
-    id : new FormControl('', { nonNullable: true }),
+    id: new FormControl('', { nonNullable: true }),
     name: new FormControl('', { nonNullable: true }),
     category: new FormControl('', { nonNullable: true }),
     reward: new FormControl('', { nonNullable: true }),

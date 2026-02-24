@@ -111,9 +111,15 @@
 
                 </div>
                 <button type="submit" class="btn-custom">Editar</button>
-            </form> 
+            </form>
 
             } @else {
+            <button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;"
+                (click)="all()">Todos</button>
+            <button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;"
+                (click)="paidFilter()">Pagado</button>
+            <button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;"
+                (click)="notPaidFilter()">Pendiente</button>
             <table class="table-custom">
                 <thead>
                     <tr>
@@ -126,6 +132,7 @@
                 </thead>
                 <tbody>
                     @for(fallero of falleros; track fallero; let i = $index) {
+                    @if(paid == true && fallero.payment_status == true) {
                     <tr>
                         <td>{{i + 1 }}</td>
                         <td>{{ fallero.name }}</td>
@@ -142,8 +149,26 @@
                             <button class="btn-secondary-custom" style="margin-right: -350px;"
                                 (click)="delete(fallero.id)">Dar de baja</button>
                         </td>
-
                     </tr>
+                    }@else if(not_paid == true && fallero.payment_status == false) {
+                    <tr>
+                        <td>{{i + 1 }}</td>
+                        <td>{{ fallero.name }}</td>
+                        <td>{{ fallero.dni }}</td>
+                        @if(fallero.payment_status == true) {
+                        <td>Pagado</td>
+                        } @else {
+                        <td style="background-color: red;">Pendiente</td>
+                        }
+                        <td><button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;"
+                                (click)="editBtn(fallero)">Editar</button>
+                            <button class="btn-secondary-custom" style="margin-right: 40px;"
+                                (click)="detail(fallero)">Detalle</button>
+                            <button class="btn-secondary-custom" style="margin-right: -350px;"
+                                (click)="delete(fallero.id)">Dar de baja</button>
+                        </td>
+                    </tr>
+                    }
                     }
                 </tbody>
             </table>
@@ -155,8 +180,7 @@
                     <label for="name" class="form-label">Nombre</label>
                     <input type="text" class="form-control-custom" placeholder="Nombre y Apellido" id="name"
                         formControlName="name" required>
-                        <input type="hidden" class="form-control-custom"  id="id"
-                        formControlName="id" required>
+                    <input type="hidden" class="form-control-custom" id="id" formControlName="id" required>
                 </div>
                 <div class="mb-4 text-center">
                     <label for="category" class="form-label">Categoría</label>
@@ -203,7 +227,7 @@
                         required>
                 </div>
                 <div class="mb-4 text-center">
-                     <label for="dni" class="form-label">DNI</label>
+                    <label for="dni" class="form-label">DNI</label>
                     <input type="text" class="form-control-custom" id="dni" placeholder="DNI con letra"
                         formControlName="dni" required>
 
