@@ -5,13 +5,18 @@
         <div class="col-lg-8">
             <div class="container-custom">
                 <h2 class="mb-3">Últimas Noticias</h2>
-                @for(event of events; track $index){
+                @for(event of events; track $index; let i = $index){
                     <div class="news-item mb-4 pb-3" style="border-bottom: 2px dashed #000;">
                         <h3>{{event.title}}</h3>
                         <p>{{event.description}}</p>
+                        @if(!authService.hasRole("ROLE_ADMIN")) {
+                        @if(!event.participated){
                         <button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;"
-                (click)="participate(event.id)">Apuntarse</button>
-                        
+                (click)="participate(event)">Apuntarse</button>
+                        }@else{
+                            <button class="btn-secondary-custom" style="margin-right: 40px;margin-left: 50px;" disabled>Estas apuntado</button>
+                        }
+                    }
                     </div>
                 }
             </div>

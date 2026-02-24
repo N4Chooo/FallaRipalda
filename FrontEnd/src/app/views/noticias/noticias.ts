@@ -18,6 +18,7 @@ export class Noticias {
   public user: any = '';
   public fallero: any = '';
   public ids: { [key: string]: number } = {};
+  
 
   public getResponse(month: string): void {
     this.data.getEvents(month).subscribe((response) => {
@@ -30,13 +31,14 @@ export class Noticias {
     this.getResponse(this.mes);
   }
 
-  public participate(id: any) {
+  public participate(event: any) {
+    event.participated = true;
       this.data.getFalleroDni(localStorage.getItem('user_dni')).subscribe((response) => {
         this.fallero = response;
         this.cdr.markForCheck();
         this.ids = { 
             'PartId': this.fallero[0].id,
-            'EvenId': id
+            'EvenId': event.id
         };
         this.data.addAssistant(this.ids).subscribe((response) => {
           alert(response.status)
@@ -47,5 +49,10 @@ export class Noticias {
   public onMonthChange(month: string) {
     this.mes = month;
     this.getResponse(month);
+  }
+
+   public authService = inject(Request);
+  onLogout() {
+    this.authService.logout();
   }
 }

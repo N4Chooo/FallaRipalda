@@ -105,6 +105,7 @@ final class ApiParticipantsController extends AbstractController
                     'rol' => $participant->getRol(),
                     'dni' => $participant->getDni(),
                     'fee' => $participant->getFee()->getType(),
+                    'event' => $participant->getEvent(),
                 ];
             }
 
